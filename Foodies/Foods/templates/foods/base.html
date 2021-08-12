@@ -1,0 +1,155 @@
+
+{% load i18n %}
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Foodies</title>
+    <link rel="icon" href="{% static 'assets/images/nav/fast-food.png' %}">
+    <!-- google-fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="//fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- //google-fonts -->
+    <!-- Template CSS Style link -->
+    <link rel="stylesheet" href="{% static 'assets/css/style-starter.css' %}">
+    <style>
+        
+        .w3l-content-12-main {
+            max-width: 500px;
+            margin: auto;
+            border: 1px solid #0dabd3;
+            padding: 20px 0px;
+            border-radius: 8px;
+            background-color: #eaeaeb;
+            box-shadow: rgba(201, 152, 152, 0.336) 2px 1px 5px 2px
+        }
+
+        .form-elegant .font-small {
+            font-size: 0.8rem;
+        }
+
+        .btn-rounded {
+            border-radius: 20px;
+        }
+
+        .form-elegant .z-depth-1a {
+            background: rgb(63, 94, 251);
+            background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+            border-radius: 20px;
+            -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+            box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+        }
+
+        .form-elegant .z-depth-1 {
+            padding: 6px 12px;
+            border-radius: 50%;
+            -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+            box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+        }
+
+        .form-elegant .z-depth-1-half,
+        .form-elegant .btn:hover {
+            -webkit-box-shadow: 0 6px 13px 0 rgba(85, 182, 255, 0.28), 0 5px 17px 0 rgba(36, 133, 255, 0.15);
+            box-shadow: 0 6px 13px 0 rgba(85, 182, 255, 0.28), 0 5px 17px 0 rgba(36, 133, 255, 0.15);
+        }
+
+        .form-elegant .modal-header {
+            border-bottom: none;
+        }
+
+        .modal-dialog .form-elegant .btn .fab {
+            color: #2196f3 !important;
+        }
+
+        .form-elegant .modal-body,
+        .form-elegant .modal-footer {
+            font-weight: 400;
+        }
+
+        .validate {
+            border: none;
+            outline: none;
+            border-radius: 0%;
+            border-bottom: 1px solid rgba(121, 155, 254, 0.25);
+        }
+
+        #btn-lang:hover {
+            text-decoration: underline;
+        }
+
+        .dropbtn {
+            background-color: #3498db00;
+            color: rgba(121, 108, 108, 0.781);
+            padding: 6px;
+            font-size: 16px;
+            border-radius: 18px;
+            border: none;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: #bdb32d79;
+            color: #fff;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            overflow: auto;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 5px;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown a:hover {
+            background-color: #ddd;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+
+</head>
+
+<body>
+    {% include 'foods/header.html' %}
+    {% block content %}
+
+    {% endblock %}
+
+    {% include 'foods/footer.html' %}
+    {% include 'foods/scripts.html' %}
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+
+</html>

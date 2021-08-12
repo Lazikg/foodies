@@ -1,0 +1,118 @@
+{% extends 'foods/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- inner banner -->
+<div class="inner-banner">
+    <section class="w3l-breadcrumb">
+        <nav class="navbar navbar-expand-lg  stroke px-0">
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <ul class="navbar-nav mx-lg-auto">
+                    {% for categor in category %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'c_p' categor.id %}"><img alt="Category img"
+                         width="30" src="{{ categor.image_nav.url }}">{{categor.name}}</a>
+                    </li>
+                    {% empty %}
+                    <li class="nav-item">Category Not Found</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <h4 class="inner-text-title font-weight-bold mb-sm-3 mb-2">Foodies Menu </h4>
+            <ul class="breadcrumbs-custom-path">
+                <li class="active"><span class="fa fa-chevron-right mx-2" aria-hidden="true"></span>{{cName.name}}
+                </li>
+            </ul>
+        </div>
+    </section>
+</div>
+<!-- //inner banner -->
+<!-- menu -->
+<div class="menu-w3ls py-5" id="menu">
+    <div class="container py-md-4 py-3">
+        
+        <div class="row menu-body">
+            <!-- Section starts: Breakfast -->
+            {% for product in products %}
+            <div class="col-lg-6 menu-section">
+
+                <div class="row menu-item ">
+                    <div class="col-3 p-0 position-relative view overlay zoom">
+                        <img src="{{ product.image.url }}" class="img-fluid " alt="">
+                        <!-- <a href="#order" class="btn button-style button-style-2">Add</a> -->
+                        <form action="{% url 'card:cart_add' product.id %}" method="post">
+                            <div class="row" style="margin: 20px 0px;">
+                                {{ cart_product_form }}
+                            </div>
+                            {% csrf_token %}
+                            <input class="btn text-light button-style-2" type="submit" value="Add"
+                                style="margin-top: 30px;">
+                        </form>
+                    </div>
+                    <div class="col-9 pl-4">
+                        <div class="row no-gutters">
+                            <div class="col-9 menu-item-name">
+                                <h6>{{product.name}}</h6>
+                            </div>
+                            <div class="col-3 menu-item-price text-right">
+                                <h6>${{product.price}}</h6>
+                            </div>
+                        </div>
+                        <div class="menu-item-description">
+                            {{product.desc}}
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            {% endfor %}
+            <!-- Section ends: Breakfast -->
+            
+            {% for products in product %}
+            <div class="col-lg-6 menu-section">
+                <div class="row menu-item ">
+                    <div class="col-3 p-0 position-relative view overlay zoom">
+                        <img src="{{ products.image.url }}" class="img-fluid " alt="">
+                        <!-- <a href="#order" class="btn button-style button-style-2">Add</a> -->
+                        <form action="{% url 'card:cart_add' products.id %}" method="post">
+                            <div class="row" style="margin: 20px 0px;">
+                                {{ cart_product_form }}
+                            </div>
+                            {% csrf_token %}
+                            <input class="btn text-light button-style-2" type="submit" value="Add"
+                                >
+                        </form>
+                    </div>
+                    <div class="col-9 pl-4">
+                        <div class="row no-gutters">
+                            <div class="col-9 menu-item-name">
+                                <h6>{{products.name}}</h6>
+                            </div>
+                            <div class="col-3 menu-item-price text-right">
+                                <h6>${{products.price}}</h6>
+                            </div>
+                        </div>
+                        <div class="menu-item-description">
+                            {{products.desc}}    
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            {% endfor %}
+        </div>
+
+
+
+        <!-- Section ends: Dinner -->
+    </div>
+</div>
+
+{% endblock %}

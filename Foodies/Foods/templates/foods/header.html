@@ -1,0 +1,134 @@
+{% load i18n %}
+{% load static %}
+
+<!--header-->
+<header id="site-header" class="fixed-top">
+    <div class="container">
+        <nav class="navbar navbar-expand-lg  stroke px-0">
+
+            <h1>
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <i class="fa fa-cutlery" aria-hidden="true"></i> Foodies
+                </a>
+            </h1>
+
+            <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+                data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+                <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mx-lg-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">{% trans 'Home' %}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'products' %}">{% trans 'Menu' %}</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">{% trans 'About Us' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about' %}">{% trans 'Blog' %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'contact' %}">{% trans 'Contact Us' %}</a>
+                    </li>
+                   <li class="nav-iten">
+                        <a class="nav-link" href="#"><i class="fas fa-history"></i>History</a>
+                   </li>    
+                </ul>
+            </div>
+
+            <!-- search button -->
+            <div class="search-right">
+                <a href="#search" title="search"><span class="fa fa-search" aria-hidden="true"></span></a>
+                <!-- search popup -->
+                <div id="search" class="pop-overlay">
+                    <div class="popup">
+                        <h4 class="search-pop-text-w3 text-white text-center mb-4">{% trans 'Search Here Your Favourite Food' %} </h4>
+                        <form action="#search" method="GET" class="search-box">
+                            <div class="input-search"> <span class="fa fa-search mr-2" aria-hidden="true"></span><input
+                                    type="search" placeholder="Enter Keyword" name="search" required="required"
+                                    autofocus="">
+                            </div>
+                            <button type="submit" class="btn button-style">{% trans 'Search' %}</button>
+                        </form>
+                    </div>
+                    <a class="close" href="#close">×</a>
+                </div>
+                <!-- //search popup -->
+            </div>
+            <!-- //search button -->
+            <!-- toggle switch for light and dark theme -->
+            <div class="cont-ser-position">
+                <nav class="navigation">
+                    <div class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox">
+                            <div class="mode-container">
+                                <i class="gg-sun"></i>
+                                <i class="gg-moon"></i>
+                            </div>
+                        </label>
+                    </div>
+                </nav>
+            </div>
+            <div id="cart-shop" class="cont-ser-position" style="margin: 0 4em; display: inline-flex;">
+                <a href="{% url 'card:cart_detail' %}">
+                    <i class="fas fa-shopping-cart btn-icon__inner"></i>
+                    {% with total_items=cart|length %}
+                    {% if total_items > 0 %}
+
+                    <span class="badge badge-sm badge-primary badge-pos rounded-circle">{{ total_items }}</span>
+
+                    {% else %}
+                    <span class="badge badge-sm badge-primary badge-pos rounded-circle">0</span>
+
+                    {% endif %}
+                    {% endwith %}
+                </a>
+            </div>
+            <div class="cont-ser-position" >
+             
+            </div>
+            <div class="cont-ser-position" style="background-color: rgba(255, 255, 255, 0);">
+                <form action="{% url 'set_language' %}" method="POST">
+                    {% csrf_token %}
+                    <input name="next" type="hidden" value="{{ redirect_to }}" />
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        {% if language.code == 'en' %}
+                        <button type="submit" id="btn-lang" name="language" value="{{ language.code }}"  style="border: none;background-color: rgba(250, 235, 215, 0);">
+                            <img src="{% static 'assets/images/united-kingdom.png' %}" width="30" alt="en">
+                        </button>|
+                        {% elif language.code == 'uz' %}
+                        <button type="submit" id="btn-lang" name="language" value="{{ language.code }}" style="border: none;background-color: rgba(240, 248, 255, 0);">
+                            <img src="{% static 'assets/images/uzbekistan (1).png' %}" width="30" alt="uz">
+                        </button>
+                        
+                        {% endif %}
+                    {% endfor %}
+                </form>
+                
+            </div>
+            <!-- toggle switch for light and dark theme -->
+
+        </nav>
+
+    </div>
+
+</header>
+
+<!-- Modal -->
+
+
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
